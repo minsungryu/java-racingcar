@@ -36,12 +36,12 @@ public class StringAdderSplitterTest {
 
     @Test
     public void nullInput() {
-        assertThat(splitter.split(null)).containsExactly("");
+        assertThat(splitter.split(null)).isEmpty();
     }
 
     @Test
     public void emptyInput() {
-        assertThat(splitter.split("")).containsExactly("");
+        assertThat(splitter.split("")).isEmpty();
     }
 
     @Test

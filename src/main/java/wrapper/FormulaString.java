@@ -25,14 +25,14 @@ public class FormulaString {
     public List<Number> getOperands() {
         return IntStream.range(0, tokens.length)
                 .filter(FormulaString::isEven)
-                .mapToObj(i -> PositiveNumber.of(tokens[i].trim()))
+                .mapToObj(i -> PositiveNumber.of(tokens[i]))
                 .collect(Collectors.toCollection(LinkedList::new));
     }
 
     public List<Operator> getOperators() {
         return IntStream.range(0, tokens.length)
                 .filter(FormulaString::isOdd)
-                .mapToObj(i -> Operator.as(tokens[i].trim()))
+                .mapToObj(i -> Operator.as(tokens[i]))
                 .collect(Collectors.toCollection(LinkedList::new));
     }
 

@@ -21,11 +21,11 @@ public class Calculator {
     }
 
     public static int calculate(String input) {
-        return Calculator.calculate(new FormulaString(input, new SpaceSplitter()));
+        return calculate(new FormulaString(input, new SpaceSplitter()));
     }
 
     public static int calculate(String input, FormulaSplitter parser) {
-        return Calculator.calculate(new FormulaString(input, parser));
+        return calculate(new FormulaString(input, parser));
     }
 
     public static int calculate(FormulaString input) {

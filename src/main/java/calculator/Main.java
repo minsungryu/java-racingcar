@@ -2,18 +2,15 @@ package calculator;
 
 import calculator.domain.Calculator;
 import calculator.splitter.StringAdderSplitter;
-import calculator.view.ConsoleView;
-import calculator.view.View;
-
-import java.io.IOException;
+import calculator.view.ConsoleCalculatorView;
+import calculator.view.CalculatorView;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        View view = new ConsoleView();
-
+    public static void main(String[] args) {
+        CalculatorView view = new ConsoleCalculatorView();
         int answer = Calculator.calculate(view.getFormula(), new StringAdderSplitter());
-        view.printAnswer(answer);
+        view.println(answer);
     }
 
 }
