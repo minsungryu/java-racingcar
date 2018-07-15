@@ -10,6 +10,15 @@ public class RacingCars {
     private List<Car> cars;
     private int maxPosition;
 
+    public RacingCars(List<Car> cars) {
+        this(cars, 0);
+    }
+
+    public RacingCars(List<Car> cars, int maxPosition) {
+        this.cars = cars;
+        this.maxPosition = maxPosition;
+    }
+
     public void moveCars(int times) {
         maxPosition = 0;
         for (int i = 0; i < times; i++) {
@@ -34,14 +43,6 @@ public class RacingCars {
                 .toArray(String[]::new);
 
         return String.join(", ", winnerNames);
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public void setMaxPosition(int maxPosition) {
-        this.maxPosition = maxPosition;
     }
 
 }

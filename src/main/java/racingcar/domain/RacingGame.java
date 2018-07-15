@@ -14,8 +14,7 @@ public class RacingGame {
     }
 
     private void initGame() {
-        racingCars = new RacingCars();
-        racingCars.setCars(view.getRacingCars());
+        racingCars = new RacingCars(view.getRacingCars());
     }
 
     private void printGameResult() {

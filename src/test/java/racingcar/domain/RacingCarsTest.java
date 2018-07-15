@@ -20,8 +20,7 @@ public class RacingCarsTest {
         c2 = new Car("b", 2);
         c3 = new Car("c", 2);
 
-        racingCars = new RacingCars();
-        racingCars.setCars(Arrays.asList(c1, c2, c3));
+        racingCars = new RacingCars(Arrays.asList(c1, c2, c3), 2);
     }
 
     @Test
@@ -32,7 +31,6 @@ public class RacingCarsTest {
 
     @Test
     public void getWinnerNames() {
-        racingCars.setMaxPosition(2);
         assertThat(racingCars.getWinnerNames())
                 .isEqualTo("b, c");
     }
