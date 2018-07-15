@@ -1,10 +1,13 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import wrapper.NameString;
 
-import java.io.*;
-import java.util.*;
-import java.util.stream.IntStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingConsoleView implements RacingView {
 
@@ -20,13 +23,8 @@ public class RacingConsoleView implements RacingView {
 
     @Override
     public List<Car> getRacingCars() {
-        println("자동차 대수는 몇 대 인가요?");
-        int numberOfCars = Integer.parseInt(read());
-        List<Car> cars = new ArrayList<>(numberOfCars);
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+        println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return NameString.ofRaw(read()).stream().map(Car::new).collect(Collectors.toList());
     }
 
     @Override
@@ -37,12 +35,17 @@ public class RacingConsoleView implements RacingView {
 
     @Override
     public void print(Object message) {
-        Optional.ofNullable(message).ifPresent(System.out::print);
+        System.out.print(message);
+    }
+
+    @Override
+    public void println() {
+        System.out.println();
     }
 
     @Override
     public void println(Object message) {
-        Optional.ofNullable(message).ifPresent(System.out::println);
+        System.out.println(message);
     }
 
 }

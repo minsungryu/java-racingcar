@@ -1,41 +1,37 @@
 package racingcar.domain;
 
-import racingcar.util.Util;
 import racingcar.view.RacingView;
-
-import java.util.List;
 
 public class RacingGame {
 
+    private RacingCars racingCars;
     private RacingView view;
-
-    private List<Car> cars;
-    private int times;
-    private int maxPosition;
 
     public void run() {
         initGame();
-        while (0 < times--) {
-            maxPosition = moveCars();
-        }
+        racingCars.moveCars(view.getGameTimes());
         printGameResult();
     }
 
     private void initGame() {
-        cars = view.getRacingCars();
-        times = view.getGameTimes();
-        maxPosition = 0;
-    }
-
-    public int moveCars() {
-        return cars.stream()
-                .mapToInt(car -> car.moveByCondition(Util.randomCondition()))
-                .max().orElse(maxPosition);
+        racingCars = new RacingCars();
+        racingCars.setCars(view.getRacingCars());
     }
 
     private void printGameResult() {
+        printCarsPosition();
+        printGameWinners();
+    }
+
+    private void printGameWinners() {
+        view.println();
+        view.print(String.format("%s가 최종 우승했습니다.", racingCars.getWinnerNames()));
+    }
+
+    private void printCarsPosition() {
+        view.println();
         view.println("실행결과");
-        cars.stream().forEach(view::println);
+        racingCars.getGameResult().stream().forEach(view::println);
     }
 
     public void setView(RacingView view) {

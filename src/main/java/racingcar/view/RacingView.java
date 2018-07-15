@@ -12,6 +12,8 @@ public interface RacingView {
 
     void print(Object message);
 
+    void println();
+
     void println(Object message);
 
 }

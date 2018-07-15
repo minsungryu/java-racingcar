@@ -25,4 +25,12 @@ public class CarTest {
         assertThat(car.moveByCondition(Car.THRESHOLD)).isOne();
     }
 
+    @Test
+    public void isSamePosition() {
+        int fakePosition = 3;
+        Car fakeCar = new Car(fakePosition);
+        assertThat(car.isSamePosition(fakePosition)).isFalse();
+        assertThat(fakeCar.isSamePosition(fakePosition)).isTrue();
+    }
+
 }
